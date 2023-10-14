@@ -9,5 +9,5 @@ This repository serves as an example for Yuyu378's [FFTpack](https://github.com/
 <br>
 <hr>
 
-**Main Author:** Yuyu378
+**Main Author:** Yuyu378 <br>
 **Edited by:** D.S.
