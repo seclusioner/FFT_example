@@ -21,5 +21,13 @@ $$ \mathcal{F}\\{x * h\\} = \mathcal{F}\\{x\\} \cdot \mathcal{F}\\{h\\} $$
 <br>
 <hr>
 
-**Main Author:** Yuyu378 <br>
-**Edited by:** D.S.
+<div align="left">
+    <p><strong>Main Author：</strong> Yuyu378</p>
+    <p><strong>Edited by：</strong> D.S.</p>
+</div>
+
+<div align="right">
+    <p><em>Last update date：2023 / 10 / 14</em></p>
+</div>
+
+
