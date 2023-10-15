@@ -17,3 +17,5 @@ float* complex_to_float(dcomplex *a, int N);
 float* convolve(float *x, float *h, int sz_x, int sz_h, int *len);
 float* fftconvolve(float *x, float *h, int sz_x, int sz_h, int *len);
 float* zeropadding(float *x, int size_x, int N);
+
+void spectrum(float *x, int N, float Fs);
