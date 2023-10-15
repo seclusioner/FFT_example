@@ -27,7 +27,7 @@ $$ \mathcal{F}\\{x * h\\} = \mathcal{F}\\{x\\} \cdot \mathcal{F}\\{h\\} $$
 </div>
 
 <div align="right">
-    <p><em>Last update date：2023 / 10 / 14</em></p>
+    <p><em>Last update date：2023 / 10 / 15</em></p>
 </div>
 
 
