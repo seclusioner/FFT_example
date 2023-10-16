@@ -19,10 +19,15 @@ $$ x[n] * h[n] = \sum_{k=-\infty}^{\infty} x[k] \cdot h[n - k] $$
 $$ \mathcal{F}\\{x * h\\} = \mathcal{F}\\{x\\} \cdot \mathcal{F}\\{h\\} $$
 
 <br>
+
+## Instructions
+To get started, you can clone this repository and run the `main.c` file in your preferred IDE. If you are using VSCode as your IDE, the workspace folder (root) will generate a `tasks.json` file. In this file, you'll need to change "&{file}" to "${fileDirname}\\*.c" to ensure proper execution.
+
+
 <hr>
 
 <div align="left">
-    <p><strong>Main Author：</strong> Yuyu378</p>
+    <p><strong>Main Author (FFT)：</strong> Yuyu378</p>
     <p><strong>Edited by：</strong> D.S.</p>
 </div>
 
