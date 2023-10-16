@@ -2,6 +2,9 @@
 
 This repository serves as an example for [Yuyu378's FFTpack](https://github.com/Yuyu378/FFTpack). I have simplified the header and made some code modifications. You can extend this library to suit your specific application.
 
+## Instructions
+To get started, you can clone this repository and run the `main.c` file in your preferred IDE. If you are using VSCode as your IDE, the workspace folder (root) will generate a `tasks.json` file. In this file, you'll need to change "&{file}" to "${fileDirname}\\*.c" to ensure proper execution.
+
 ## Content
 - Complex Fundamental Operations
 - FFT (for any Length)
@@ -19,11 +22,6 @@ $$ x[n] * h[n] = \sum_{k=-\infty}^{\infty} x[k] \cdot h[n - k] $$
 $$ \mathcal{F}\\{x * h\\} = \mathcal{F}\\{x\\} \cdot \mathcal{F}\\{h\\} $$
 
 <br>
-
-## Instructions
-To get started, you can clone this repository and run the `main.c` file in your preferred IDE. If you are using VSCode as your IDE, the workspace folder (root) will generate a `tasks.json` file. In this file, you'll need to change "&{file}" to "${fileDirname}\\*.c" to ensure proper execution.
-
-
 <hr>
 
 <div align="left">
