@@ -7,6 +7,8 @@
 
 #define UNICODE
 
+float input[]={1.36849, 1.00912, 0.77214, -0.2554, -0.35185, -0.78784, -0.34128, -0.2047, 0.43879, 0.91979, 1.35083, 1.18693, 0.77584, 0.01244, -0.41674, -0.77935, -0.52584, 0.0619, 0.65222, 1.26387};
+
 // -------------------------------
 #define SAMPLING_FREQ 10
 #define SAMPLES 5
@@ -79,6 +81,9 @@ int main(void) {
     printf("After convolve:\n");
     print_arr(yn, N);
     free(yn);
+
+    printf("---------------\n");
+    spectrum(input, sizeof(input)/sizeof(input[0]), SAMPLING_FREQ);
 
 	printf("\nPress any key to continue . . . ");
 	if (_getch()) printf("\n");

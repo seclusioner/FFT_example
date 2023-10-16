@@ -96,7 +96,7 @@ void spectrum(float *x, int N, float Fs){
     xn = float_to_complex(x, N);
     X = fft(xn, N, backward);
     for(int i=0;2*i<N;i++){
-        printf("%.3f Hz\t%.3f\n", (i*Fs/N), cabs(X[i]));
+        printf("%.3f Hz\t%.3f\n", (i*Fs/N), magnitude(X[i]));
     }
     printf("-------------------------------\n");
 }
