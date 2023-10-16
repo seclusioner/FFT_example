@@ -99,4 +99,6 @@ void spectrum(float *x, int N, float Fs){
         printf("%.3f Hz\t%.3f\n", (i*Fs/N), magnitude(X[i]));
     }
     printf("-------------------------------\n");
+    free(xn);
+    free(X);
 }
