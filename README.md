@@ -2,6 +2,11 @@
 
 This repository serves as an example for [Yuyu378's FFTpack](https://github.com/Yuyu378/FFTpack). I have simplified the header and made some code modifications. You can extend this library to suit your specific application.
 
+## What I edited
+
+- Add dsp library (updating)
+- Focused the library on FFT operations
+
 ## Instructions
 To get started, you can clone this repository and run the `main.c` file in your preferred IDE. If you are using VSCode as your IDE, the workspace folder (root) will generate a `tasks.json` file. In this file, you'll need to change "${file}" to "${fileDirname}\\*.c" to ensure proper execution.
 
