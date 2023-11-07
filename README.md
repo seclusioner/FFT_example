@@ -22,7 +22,7 @@ To get started, you can clone this repository and run the `main.c` file in your 
 For fundamental FFT, it can only operate on lengths that are powers of 2. Yuyu378 has implemented a general version for FFT of any length, allowing you to use it for various DSP applications, such as convolution.
 <br><br>
 
-$$ x[n] * h[n] = \sum_{k=-\infty}^{\infty} x[k] \cdot h[n - k] $$
+$$ x[n] * h[n] = \sum_{k=-\infty}^{\infty} h[k] \cdot x[n - k] $$
 
 <br>
 
