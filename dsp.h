@@ -11,6 +11,10 @@
 #include "numeric.h"
 #include "complexlib.h"
 
+#ifndef PI
+#define PI 3.14159265358979323846
+#endif // PI
+
 dcomplex* float_to_complex(float *a, int N);
 float* complex_to_float(dcomplex *a, int N);
 
