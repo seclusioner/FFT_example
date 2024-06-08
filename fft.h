@@ -42,6 +42,10 @@
 #include "numeric.h"
 #include "complexlib.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //
 // Types
@@ -141,3 +145,7 @@ static dcomplex* _raw_radix2fft(dcomplex* data, unsigned N, bool is_forward, boo
 static dcomplex* _raw_raderfft(dcomplex* data, unsigned N, bool is_forward, bool keep_input);
 
 static dcomplex* _raw_bluesteinfft(dcomplex* data, unsigned N, bool is_forward, bool keep_input);
+
+#ifdef __cplusplus
+}
+#endif
