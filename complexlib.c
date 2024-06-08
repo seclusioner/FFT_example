@@ -127,4 +127,3 @@ void _Cdiverr(void) {
     fprintf(stderr, "TypeError: cdiv( <dcomplex, double> a, <dcomplex, double> b).\n");
     exit(EXIT_FAILURE);
 }
-

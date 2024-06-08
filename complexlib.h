@@ -7,6 +7,10 @@
 #ifndef _COMPLEXLIB_H_
 #define _COMPLEXLIB_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct double_complex_t {
     double re;
     double im;
@@ -106,5 +110,9 @@ void _Cdiverr(void);
     ),                              \
     default: _Cdiverr               \
 )(a, b)
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

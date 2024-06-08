@@ -1,16 +1,16 @@
-// 
+//
 // numeric.h
-// 
+//
 //		Required numerical algorithms header
-// 
+//
 //		v0.1.1
 //		----------------------------
 //		* Split the numerical algorithms from mymath
-// 
+//
 //		v0.2.0
 //		----------------------------
 //		* Add functions bitReverse() and bitReverseSorting()
-// 
+//
 
 #pragma once
 
@@ -28,6 +28,9 @@
 #define PI (3.1415926535897932384626433832795028841971693993751058209749445923)
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 //-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //
 // Functions
@@ -88,7 +91,7 @@ unsigned expModuloN(unsigned g, unsigned k, unsigned n);
 /// The sub-function required to get bijective function in Radar's algorithm
 /// <para>.</para>
 /// <para> since </para>
-/// <para> ax + ny = gcd(a, n) = 1, </para> 
+/// <para> ax + ny = gcd(a, n) = 1, </para>
 /// <para> ax - 1 = (-y)n, </para>
 /// <para> ax = 1 (mod n), </para>
 /// <para> that is, x = pow(a, -1) (mod n), </para>
@@ -108,3 +111,7 @@ unsigned findPrimitiveRoot(unsigned n);
 unsigned bitReverse(unsigned v, unsigned N);
 
 dcomplex* bitReverseSorting(dcomplex* z, unsigned N);
+
+#ifdef __cplusplus
+}
+#endif
