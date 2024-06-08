@@ -114,11 +114,11 @@ void free2D_double(double** array, int rows){
     free(array);
 }
 
-void free2D_dcomplex(dcomplex** array, int rows){
+void free2D_dcomplex(dcomplex** arr, int rows){
     for (int i = 0; i < rows; i++) {
-        free(array[i]);
+        free(arr[i]);
     }
-    free(array);
+    free(arr);
 }
 
 
@@ -231,7 +231,7 @@ dcomplex** idft2d(dcomplex** fft_result, int width, int height){
 }
 
 // 2D fft
-dcomplex** fft2d(dcomplex** image, int rows, int cols){
+dcomplex** fft2d(dcomplex** image, int rows, int cols, norm_mode mode){
     ////////////////////// fft2D //////////////////////
     dcomplex* tmp;
     dcomplex* tmp_fft;
@@ -249,7 +249,7 @@ dcomplex** fft2d(dcomplex** image, int rows, int cols){
         for (int j = 0; j < cols; j++) { // cols
             tmp[j] = image[i][j];
         }
-        tmp_fft = fft(tmp, cols, backward); // 0 for forward FFT
+        tmp_fft = fft(tmp, cols, mode); // 0 for forward FFT
         for (int k = 0; k < cols; k++) {
             fft_rows[i][k] = tmp_fft[k];
         }
@@ -273,7 +273,7 @@ dcomplex** fft2d(dcomplex** image, int rows, int cols){
         for (int j = 0; j < rows; j++) {
             tmp[j] = transposed_fft_rows[i][j];
         }
-        tmp_fft = fft(tmp, rows, backward); // 0 for forward FFT
+        tmp_fft = fft(tmp, rows, mode); // 0 for forward FFT
         for (int k = 0; k < rows; k++) {
             X[k][i] = tmp_fft[k];
         }
@@ -288,7 +288,7 @@ dcomplex** fft2d(dcomplex** image, int rows, int cols){
 }
 
 // 2D ifft
-static dcomplex* ifft_self(dcomplex* fft_result, int N){
+static dcomplex* ifft_self(dcomplex* fft_result, int N, norm_mode mode){
     // conjugate -> fft -> 1/N
     dcomplex* X;
 
@@ -296,16 +296,28 @@ static dcomplex* ifft_self(dcomplex* fft_result, int N){
         fft_result[i] = conjugate(fft_result[i]);
     }
 
-    X = fft(fft_result, N, backward);
+    X = fft(fft_result, N, mode);
+
+    double coefficient;
+    if(mode == backward){
+        coefficient = 1.0/(double)N;
+    }
+    else if(mode == ortho){
+        coefficient = 1.0 / sqrt(N);
+    }
+    else if(mode == forward){
+        coefficient = 1.0;
+    }
+
 
     for(int i=0;i<N;i++){
-        X[i] = dcomplex_smul(X[i], 1.0/(double)N);
+        X[i] = dcomplex_smul(X[i], coefficient);
     }
 
     return X;
 }
 
-dcomplex** ifft2d(dcomplex** fft_result, int rows, int cols){
+dcomplex** ifft2d(dcomplex** fft_result, int rows, int cols, norm_mode mode){
     /////////////////// ifft2d ///////////////////
     dcomplex* tmp;
     dcomplex* tmp_ifft;
@@ -321,7 +333,7 @@ dcomplex** ifft2d(dcomplex** fft_result, int rows, int cols){
         for (int j = 0; j < cols; j++) { // cols
             tmp[j] = fft_result[i][j];
         }
-        tmp_ifft = ifft_self(tmp, cols); // 0 for forward FFT
+        tmp_ifft = ifft_self(tmp, cols, mode); // 0 for forward FFT
         for (int k = 0; k < cols; k++) {
             ifft_rows[i][k] = tmp_ifft[k];
         }
@@ -344,7 +356,7 @@ dcomplex** ifft2d(dcomplex** fft_result, int rows, int cols){
         for (int j = 0; j < rows; j++) {
             tmp[j] = transposed_ifft_rows[i][j];
         }
-        tmp_ifft = ifft_self(tmp, rows); // 0 for forward FFT
+        tmp_ifft = ifft_self(tmp, rows, mode); // 0 for forward FFT
         for (int k = 0; k < rows; k++) {
             x[k][i] = tmp_ifft[k];
         }
@@ -365,6 +377,28 @@ dcomplex** ifft2d(dcomplex** fft_result, int rows, int cols){
 
     return x;
 }
+
+void spectrum_shift(dcomplex **sp, int rows, int cols) {
+    int mid_row = rows / 2;
+    int mid_col = cols / 2;
+
+    dcomplex tmp;
+
+    for (int i = 0; i < mid_row; i++) {
+        for (int j = 0; j < mid_col; j++) {
+            // upper-left <-> lower-right
+            tmp = sp[i][j];
+            sp[i][j] = sp[mid_row + i][mid_col + j];
+            sp[mid_row + i][mid_col + j] = tmp;
+
+            // upper-right <-> lower-left
+            tmp = sp[i][mid_col + j];
+            sp[i][mid_col + j] = sp[mid_row + i][j];
+            sp[mid_row + i][j] = tmp;
+        }
+    }
+}
+
 
 double* zeropadding(double *x, int size_x, int N){
     // x: input, size_x: input's length, N: size of convolution.
