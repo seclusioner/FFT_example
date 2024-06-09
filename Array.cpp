@@ -4,36 +4,25 @@
 
 using namespace std;
 
-/// <summary>
-/// Allocates a 2D array for int type and initializes all elements to zero.
-/// </summary>
-/// <param name="rows">Number of rows in the array</param>
-/// <param name="cols">Number of columns in the array</param>
-/// <returns>Pointer to the allocated 2D array (int) </returns>
 int** allocate2DArray(int rows, int cols) {
-    int** array = new int* [rows];
-    if(array == NULL){
+    int** arr = new int* [rows];
+    if(arr == NULL){
         cout << "Allocation failed!\n";
         exit(1);
     }
     for (int i = 0; i < rows; ++i) {
-        array[i] = new int[cols];
+        arr[i] = new int[cols];
     }
 
     // Return to zero
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
-            array[i][j] = 0;
+            arr[i][j] = 0;
         }
     }
-    return array;
+    return arr;
 }
 
-/// <summary>
-/// Frees the memory allocated for a 2D array for int type.
-/// </summary>
-/// <param name="arr">Pointer to the 2D array</param>
-/// <param name="rows">Number of rows in the array</param>
 void free2DArray(int** arr, int rows) {
     for (int i = 0; i < rows; ++i) {
         delete[] arr[i];
@@ -94,14 +83,22 @@ void free2DArray_f(float** arr, int rows) {
     }
     delete[] arr;
 }
-/*
+
+dcomplex** allocate2D_dcomplex(int rows, int cols){
+    dcomplex **array = (dcomplex **)calloc(rows, sizeof(dcomplex *));
+    for (int i = 0; i < rows; i++) {
+        array[i] = (dcomplex *)calloc(cols, sizeof(dcomplex));
+    }
+
+    return array;
+}
+
 void free2D_dcomplex(dcomplex** arr, int rows){
     for (int i = 0; i < rows; i++) {
         free(arr[i]);
     }
     free(arr);
 }
-*/
 
 
 
