@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #include "fft.h"
-#include "numeric.h"
 #include "complexlib.h"
 #include "dsp.h"
 #include "Array.h"
@@ -28,41 +27,6 @@ dcomplex* double_to_complex(double *a, int N){
     }
 
     return output;
-}
-
-dcomplex** allocate2D_dcomplex(int rows, int cols){
-    dcomplex **array = (dcomplex **)calloc(rows, sizeof(dcomplex *));
-    for (int i = 0; i < rows; i++) {
-        array[i] = (dcomplex *)calloc(cols, sizeof(dcomplex));
-    }
-
-    return array;
-}
-
-// Allocation
-int** allocate2D(int rows, int cols){
-    int **array = (int **)calloc(rows, sizeof(int *));
-    for (int i = 0; i < rows; i++) {
-        array[i] = (int *)calloc(cols, sizeof(int));
-    }
-
-    return array;
-}
-
-double** allocate2D_double(int rows, int cols){
-    double **array = (double **)calloc(rows, sizeof(double *));
-    for (int i = 0; i < rows; i++) {
-        array[i] = (double *)calloc(cols, sizeof(double));
-    }
-
-    return array;
-}
-
-void free2D_dcomplex(dcomplex** arr, int rows){
-    for (int i = 0; i < rows; i++) {
-        free(arr[i]);
-    }
-    free(arr);
 }
 
 // Complex Operations
@@ -108,23 +72,6 @@ static dcomplex** transposeMatrix_dcomplex(dcomplex** matrix, int rows, int cols
 
     return transposedMatrix;
 }
-
-// Free allocatoin
-void free2D(int** array, int rows){
-    for (int i = 0; i < rows; i++) {
-        free(array[i]);
-    }
-    free(array);
-}
-
-void free2D_double(double** array, int rows){
-    for (int i = 0; i < rows; i++) {
-        free(array[i]);
-    }
-    free(array);
-}
-
-
 
 //////////////////////////////// Algorithm ////////////////////////////////
 // Convolution

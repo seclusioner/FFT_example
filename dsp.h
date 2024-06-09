@@ -1,10 +1,3 @@
-/*
-    DSP
-    - convolve (time domain、frequency domain)
-    - zeropadding
-    - type exchange (complex <-> double)
-*/
-
 #pragma once
 
 #include "fft.h"
@@ -18,11 +11,7 @@
 extern "C" {
 #endif
 
-
 double* complex_to_double(dcomplex *a, int N);
-double** allocate2D_double(int rows, int cols);
-
-int** allocate2D(int rows, int cols);
 
 dcomplex* double_to_complex(double *a, int N);
 dcomplex** allocate2D_dcomplex(int rows, int cols);
@@ -42,10 +31,10 @@ dcomplex** dft2d(dcomplex** image, int width, int height);
 dcomplex** idft2d(dcomplex** fft_result, int width, int height);
 dcomplex** fft2d(dcomplex** image, int rows, int cols, norm_mode mode);
 dcomplex** ifft2d(dcomplex** fft_result, int rows, int cols, norm_mode mode);
-void spectrum_shift(dcomplex **sp, int rows, int cols);
 
 double* zeropadding(double *x, int size_x, int N);
 
+void spectrum_shift(dcomplex **sp, int rows, int cols);
 void spectrum(double *x, int N, double Fs);
 
 #ifdef __cplusplus
