@@ -6,6 +6,7 @@
 #include "fft.h"
 #include "dsp.h"
 #include "complexlib.h"
+#include "Array.h"
 
 #define EPILSON 1e-10
 #define UNICODE
@@ -43,7 +44,7 @@ double** Random2dArray(int rows, int cols) {
     int min = 0;
     int max = 255;
 
-    double** matrix = allocate2D_double(rows, cols); // H, W
+    double** matrix = allocate2DArray_d(rows, cols); // H, W
     if(matrix == NULL){
         printf("Allocation failed!\n");
         exit(1);
@@ -108,7 +109,7 @@ int main(void) {
     }
 
     ///////////////// Over /////////////////
-    free2D_double(image, ROWS);
+    free2DArray_d(image, ROWS);
     free2D_dcomplex(X, ROWS);
     free2D_dcomplex(result, ROWS);
 
