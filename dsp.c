@@ -2,7 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "fft.h"
+#include "numeric.h"
+#include "complexlib.h"
 #include "dsp.h"
+#include "Array.h"
 
 // Fundamental Operations
 double* complex_to_double(dcomplex *a, int N){
@@ -54,6 +58,12 @@ double** allocate2D_double(int rows, int cols){
     return array;
 }
 
+void free2D_dcomplex(dcomplex** arr, int rows){
+    for (int i = 0; i < rows; i++) {
+        free(arr[i]);
+    }
+    free(arr);
+}
 
 // Complex Operations
 dcomplex dcomplex_add(dcomplex a, dcomplex b){ // a+b
@@ -114,12 +124,6 @@ void free2D_double(double** array, int rows){
     free(array);
 }
 
-void free2D_dcomplex(dcomplex** arr, int rows){
-    for (int i = 0; i < rows; i++) {
-        free(arr[i]);
-    }
-    free(arr);
-}
 
 
 //////////////////////////////// Algorithm ////////////////////////////////

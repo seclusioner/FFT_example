@@ -8,7 +8,6 @@
 #pragma once
 
 #include "fft.h"
-#include "numeric.h"
 #include "complexlib.h"
 
 #ifndef PI
@@ -28,12 +27,12 @@ int** allocate2D(int rows, int cols);
 dcomplex* double_to_complex(double *a, int N);
 dcomplex** allocate2D_dcomplex(int rows, int cols);
 
-void free2D_dcomplex(dcomplex** arr, int rows);
-
 dcomplex dcomplex_add(dcomplex a, dcomplex b);
 dcomplex dcomplex_sub(dcomplex a, dcomplex b);
 dcomplex dcomplex_mul(dcomplex a, dcomplex b);
 dcomplex dcomplex_smul(dcomplex a, double scalar);
+
+void free2D_dcomplex(dcomplex** arr, int rows);
 
 double* convolve(double *x, double *h, int sz_x, int sz_h, int *len);
 double* fftconvolve(double *x, double *h, int sz_x, int sz_h, int *len);
